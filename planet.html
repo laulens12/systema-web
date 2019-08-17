@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Modell einer Planetenbahn</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Chart.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <!-- Custom styles for this template -->
+    <link href="style.css" rel="stylesheet">
+    <style>
+      html, body {
+        background-image: url("bgplanet.jpg");
+      }
+    </style>
+
+    <script>
+      _titel = "Modell einer Planetenbahn";
+      _konstanten = {
+        "dt": 0.1,
+        "G": 0.01,
+        "M": 100,
+        "m": 1
+      };
+      _startwerte = {
+        "x": 0.5,
+        "y": 0,
+        "vx": 0,
+        "vy": 1.63
+      };
+      _formeln = {
+        "r": "Math.sqrt(x * x + y * y)",
+        "Fres": "-G*M*m/(r*r)",
+        "Fresx": "Fres * x/r",
+        "Fresy": "Fres * y/r",
+        "ax": "Fresx / m",
+        "ay": "Fresy / m",
+        "vx": "vx + ax * dt",
+        "vy": "vy + ay * dt",
+        "x": "x + vx * dt",
+        "y": "y + vy * dt",
+      };
+      _variables = ["r","Fres","Fresx","Fresy","ax","ay","vx","vy","x","y"];
+      _endkonditionen = ["100"];
+    </script>
+
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+      <header class="masthead mb-0">
+        <div class="inner">
+          <h3 class="masthead-brand">Modell</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="index.html">Feder</a>
+            <a class="nav-link active" href="#">Planetenbahn</a>
+            <a class="nav-link" href="blank.html">Erstellen...</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover text-right mt-5">
+        <div class="row">
+          <div class="col-md"></div>
+          <div class="col-md-8">
+            <h1 class="cover-heading">Modell einer Planetenbahn.</h1>
+            <p class="lead">In diesem Modell wird die Bewegung eines Planeten um die Sonne beschrieben, inspiriert durch Richard Feynman.</p>
+            <p class="lead">
+              <button type="button" class="btn btn-lg btn-secondary" data-toggle="modal" data-target="#modellModal" id="loslegen">
+                Loslegen
+              </button>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modellModal" tabindex="-1" role="dialog" aria-labelledby="modellModalLabel" aria-hidden="true">
+      </div>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner text-right">
+          <p>Presentiert von <span style="color:#fff;">Laurens Paulsen</a>.</p>
+        </div>
+      </footer>
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+    <!-- Custom script -->
+    <script src="script.js"></script>
+  </body>
+</html>
